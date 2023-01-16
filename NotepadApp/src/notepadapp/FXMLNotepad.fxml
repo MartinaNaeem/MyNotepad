@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="notepadapp.FXMLNotepadController">
+   <top>
+      <MenuBar fx:id="menubar" BorderPane.alignment="CENTER">
+        <menus>
+          <Menu fx:id="fileMenu" mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem fx:id="NewFileItem" mnemonicParsing="false" onAction="#newFile" text="New">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem fx:id="openFileItem" mnemonicParsing="false" onAction="#open" text="Open">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem fx:id="saveFileItem" mnemonicParsing="false" onAction="#save" text="Save">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem fx:id="exitItem" mnemonicParsing="false" onAction="#exit" text="Exit">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="ESCAPE" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+            </items>
+          </Menu>
+          <Menu fx:id="editMenu" mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem fx:id="undoItem" mnemonicParsing="false" onAction="#undo" text="Undo" />
+                  <MenuItem fx:id="redoItem" mnemonicParsing="false" onAction="#redo" text="Redo" />
+                  <MenuItem fx:id="cutItem" mnemonicParsing="false" onAction="#cut" text="Cut" />
+                  <MenuItem fx:id="copyItem" mnemonicParsing="false" onAction="#copy" text="Copy" />
+                  <MenuItem fx:id="pasteItem" mnemonicParsing="false" onAction="#paste" text="Paste" />
+                  <MenuItem fx:id="deleteItem" mnemonicParsing="false" onAction="#delete" text="Delete" />
+                  <MenuItem fx:id="selectItem" mnemonicParsing="false" onAction="#selectAll" text="Select All" />
+                  <MenuItem fx:id="renameItem" mnemonicParsing="false" onAction="#rename" text="Rename" />
+            </items>
+          </Menu>
+          <Menu fx:id="helpMenu" mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem fx:id="aboutItem" mnemonicParsing="false" onAction="#about" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <TextArea fx:id="textArea" onKeyReleased="#editText" prefHeight="375.0" prefWidth="403.0" BorderPane.alignment="CENTER" />
+   </center>
+   <bottom>
+      <Pane fx:id="countsPane" prefHeight="27.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="lettersNum" layoutX="183.0" layoutY="4.0" text="Letters: 0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="wordsNum" alignment="TOP_LEFT" contentDisplay="BOTTOM" layoutX="10.0" layoutY="4.0" text="Words: 0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </bottom>
+   <right>
+      <Pane fx:id="settingsPane" prefHeight="375.0" prefWidth="139.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="1.0" layoutY="4.0" text="Font size">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Slider fx:id="sizeSlider" layoutX="3.0" layoutY="33.0" majorTickUnit="10.0" max="50.0" min="10.0" onKeyReleased="#changeSize" prefHeight="37.0" prefWidth="129.0" showTickLabels="true" showTickMarks="true" value="10.0" />
+            <Label layoutX="3.0" layoutY="90.0" text="Font color">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ColorPicker fx:id="colorPicker" editable="true" layoutX="2.0" layoutY="122.0" onAction="#changeColor" />
+            <ComboBox fx:id="fontsComp" editable="true" layoutX="1.0" layoutY="175.0" onAction="#changeFont" prefHeight="25.0" prefWidth="136.0" promptText="Fonts" visibleRowCount="5">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </ComboBox>
+         </children>
+      </Pane>
+   </right>
+</BorderPane>
